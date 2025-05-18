@@ -2,6 +2,8 @@
 
 A real-time mood tracking application that allows users to share and visualize the collective emotional state of the community.
 
+🌐 **Live Demo**: [https://mood-monitor-pink.vercel.app](https://mood-monitor-pink.vercel.app)
+
 ## 🌟 Features
 
 - **Real-time Mood Selection**: Choose from 10 different mood emojis
