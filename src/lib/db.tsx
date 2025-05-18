@@ -9,30 +9,27 @@ const client = createClient({
     }
 });
 
-client.on('error', (err) => console.error('Redis Client Error', err));
+client.on('error', (err) => console.error('Redis Client Error:', err));
 
-let isConnected = false;
+let connectionPromise: Promise<any> | null = null;
 
-export async function connectToRedis() {
-    if (!isConnected) {
-        try {
-            console.log('Connecting to Redis...');
-            await client.connect();
-            isConnected = true;
-            console.log('Connected to Redis successfully!');
-        } catch (err) {
-            console.error('Error connecting to Redis:', err);
-            throw err;
-        }
-    }
-    return client;
-}
-
-// Ensure client is connected before any operation
 async function ensureConnection() {
-    if (!isConnected) {
-        await connectToRedis();
+    if (!connectionPromise) {
+        connectionPromise = (async () => {
+            try {
+                if (!client.isOpen) {
+                    console.log('Connecting to Redis...');
+                    await client.connect();
+                    console.log('Connected to Redis successfully!');
+                }
+            } catch (err) {
+                connectionPromise = null;
+                console.error('Error connecting to Redis:', err);
+                throw err;
+            }
+        })();
     }
+    return connectionPromise;
 }
 
 // Wrap the client methods to ensure connection

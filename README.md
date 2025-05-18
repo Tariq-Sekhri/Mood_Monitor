@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎭 Mood Monitor
 
-## Getting Started
+A real-time mood tracking application that allows users to share and visualize the collective emotional state of the community.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Real-time Mood Selection**: Choose from 10 different mood emojis
+- **One Vote Per User**: Users can only have one active mood at a time
+- **Local Persistence**: Your mood choice persists across browser sessions
+- **Global Visualization**: Background gradient reflects the most popular mood
+- **Vote Display**: Real-time view of community mood statistics
+
+## 🎨 Available Moods
+
+- 🥲 Super Sad
+- 🙁 Sad
+- 😐 Neutral
+- 🙂 Happy
+- 😀 Super Happy
+- 🥱 Tired
+- 😑 Bored
+- 🥳 Party
+- 🤪 Goofy
+- 🤒 Sick
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: Redis
+- **State Management**: React Hooks + Server Actions
+- **Architecture**: Server Components with Client Islands
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Tariq-Sekhri/Mood_Monitor
+   cd mood_monitor
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env.local` file with:
+   ```env
+   REDIS_PW=your_redis_password
+   REDIS_HOST=your_redis_host
+   REDIS_PORT=your_redis_port
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the application**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🏗️ Project Structure
+
+```
+mood_monitor/
+├── src/
+│   ├── actions/         # Server actions for mood operations
+│   ├── app/            # Next.js app router pages
+│   ├── components/     # React components
+│   ├── lib/           # Utilities and configurations
+│   └── types/         # TypeScript type definitions
+├── public/           # Static assets
+└── ...config files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💡 How It Works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Mood Selection**:
+   - Users can select their current mood from the emoji grid
+   - Each selection is stored locally and on the server
+   - Users can change their mood by clicking their current emoji
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Vote Tracking**:
+   - One vote per user is enforced
+   - Previous mood is decremented when changing moods
+   - Current mood counts are stored in Redis
 
-## Learn More
+3. **Visual Feedback**:
+   - Background gradient changes based on most popular mood
+   - Current mood is displayed in the header
+   - Real-time vote display shows community mood statistics
 
-To learn more about Next.js, take a look at the following resources:
+## 🧪 Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Use the built-in dev panel to test mood operations
+- Monitor mood counts and state changes in real-time
+- Test the one-vote-per-user system
+- Experiment with different moods to see gradient changes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
+MIT License - see the [LICENSE](LICENSE) file for details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 👥 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 🙏 Acknowledgments
+
+- Built with Next.js 14 and Redis
+- Emoji designs from [Unicode Emoji 15.1](https://unicode.org/emoji/charts/emoji-list.html)
+- Inspired by community mood tracking applications
+
+## 📫 Contact
+
+- GitHub: [@Tariq-Sekhri](https://github.com/Tariq-Sekhri)
+- LinkedIn: [Tariq Sekhri](https://linkedin.com/in/tariq-sekhri-b69098232)
+- Email: tariqsekhri+moodmonitor@gmail.com

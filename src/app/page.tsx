@@ -1,5 +1,5 @@
-import DevPanel from "@/componants/DevPannel";
-import MoodState from "@/componants/MoodState";
+import MoodState from "@/components/MoodState";
+import VoteDisplay from "@/components/VoteDisplay";
 import { Mood, Moods } from "@/types/mood"
 import { getMoodValues } from "@/actions/getMoodValues";
 
@@ -17,7 +17,6 @@ const moodGradientMap: Record<Mood['name'], [string, string]> = {
 }
 
 export default async function Home() {
-    // Fetch global mood data on the server
     const globalMoodData = await getMoodValues()
     const highestMood = Object.entries(globalMoodData)
         .reduce((highest, [mood, count]) => 
@@ -50,7 +49,8 @@ export default async function Home() {
                 </div>
                 <p className="text-sm mt-2">© 2025 Mood Monitor</p>
             </footer>
-            <DevPanel />
+            <VoteDisplay />
+            {/* <DevPanel /> */}
         </div>
     )
 }
