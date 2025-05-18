@@ -11,7 +11,7 @@ const client = createClient({
 
 client.on('error', (err) => console.error('Redis Client Error:', err));
 
-let connectionPromise: Promise<any> | null = null;
+let connectionPromise: Promise<void> | null = null;
 
 async function ensureConnection() {
     if (!connectionPromise) {
