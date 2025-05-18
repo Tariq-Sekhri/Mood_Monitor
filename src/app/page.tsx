@@ -2,6 +2,7 @@ import MoodState from "@/components/MoodState";
 import VoteDisplay from "@/components/VoteDisplay";
 import { Mood, Moods } from "@/types/mood"
 import { getMoodValues } from "@/actions/getMoodValues";
+// import DevPanel from "@/components/DevPanel";
 
 const moodGradientMap: Record<Mood['name'], [string, string]> = {
     SuperSad: ['#1C3DA9', '#0C1C52'],

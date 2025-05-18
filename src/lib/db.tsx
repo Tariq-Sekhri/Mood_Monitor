@@ -79,7 +79,7 @@ async function setupRedis() {
 }
 
 export async function getServerSideProps() {
-    console.log('getServerSideProps executed'); // Check if this is being triggered
+    console.log('getServerSideProps executed'); 
     await setupRedis();
 
     return {
@@ -89,8 +89,5 @@ export async function getServerSideProps() {
     };
 }
 
-const MyPage = ({ message }: { message: string }) => {
-    return <div>{message}</div>;
-};
 
-export default MyPage;
+export default client;
