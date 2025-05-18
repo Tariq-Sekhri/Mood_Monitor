@@ -1,6 +1,5 @@
 'use server'
 import { client } from '@/lib/db'
-import { redirect } from 'next/navigation'
 import { Moods, Mood } from '@/types/mood'
 
 export async function getMoodValues(): Promise<Record<Mood['name'], number>> {
@@ -17,7 +16,7 @@ export async function getMoodValues(): Promise<Record<Mood['name'], number>> {
         )
 
         console.log('Current mood counts:', Object.entries(moodValues)
-            .filter(([_, value]) => value > 0)
+            .filter(([, value]) => value > 0)
             .map(([mood, count]) => `${mood}: ${count}`)
             .join(', ') || 'All moods at 0');
 
