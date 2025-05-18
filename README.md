@@ -111,7 +111,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - Built with Next.js 14 and Redis
 - Emoji designs from [Unicode Emoji 15.1](https://unicode.org/emoji/charts/emoji-list.html)
-- Inspired by community mood tracking applications
 
 ## 📫 Contact
 
