@@ -4,6 +4,11 @@ import { Mood } from "@/types/mood"
 import MoodPicker from "./MoodPicker"
 import { increment } from "@/actions/increment"
 import { decrement } from "@/actions/decrement"
+import { MOOD_UPDATED_EVENT } from "./VoteDisplay"
+
+const dispatchMoodUpdate = () => {
+    window.dispatchEvent(new Event(MOOD_UPDATED_EVENT))
+}
 
 export default function MoodState() {
     const [mood, setMood] = useState<Mood | null>(null)
@@ -30,6 +35,7 @@ export default function MoodState() {
         if (!isInitialLoad) {
             try {
                 await increment(`mood:${selectedMood.name}`)
+                dispatchMoodUpdate() // Notify that mood counts have changed
             } catch (error) {
                 console.error('Failed to increment mood:', error)
             }
@@ -41,6 +47,7 @@ export default function MoodState() {
             try {
                 // First decrement the current mood
                 await decrement(`mood:${mood.name}`)
+                dispatchMoodUpdate() // Notify that mood counts have changed
                 // Then clear the mood state and localStorage
                 setMood(null)
                 localStorage.removeItem("mood")

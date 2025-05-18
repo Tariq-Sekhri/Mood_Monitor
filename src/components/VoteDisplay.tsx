@@ -3,17 +3,16 @@ import { useState, useEffect } from 'react'
 import { getMoodValues } from '@/actions/getMoodValues'
 import { Moods } from '@/types/mood'
 
+// Create a custom event for mood updates
+export const MOOD_UPDATED_EVENT = 'moodUpdated';
+
 export default function VoteDisplay() {
     const [moodValues, setMoodValues] = useState<Record<string, number>>({})
     const [loading, setLoading] = useState(false)
     const [isMinimized, setIsMinimized] = useState(false)
 
-    // Load initial values
-    useEffect(() => {
-        handleRefresh()
-    }, [])
-
     const handleRefresh = async () => {
+        if (loading) return; // Prevent multiple simultaneous refreshes
         try {
             setLoading(true)
             const values = await getMoodValues()
@@ -24,6 +23,27 @@ export default function VoteDisplay() {
             setLoading(false)
         }
     }
+
+    // Set up auto-refresh and event listeners
+    useEffect(() => {
+        // Initial load
+        handleRefresh()
+
+        // Set up auto-refresh interval
+        const intervalId = setInterval(handleRefresh, 5000)
+
+        // Set up mood update event listener
+        const handleMoodUpdate = () => {
+            handleRefresh()
+        }
+        window.addEventListener(MOOD_UPDATED_EVENT, handleMoodUpdate)
+
+        // Cleanup function
+        return () => {
+            clearInterval(intervalId)
+            window.removeEventListener(MOOD_UPDATED_EVENT, handleMoodUpdate)
+        }
+    }, []) // Empty dependency array since handleRefresh is stable
 
     if (isMinimized) {
         return (
