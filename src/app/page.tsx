@@ -16,11 +16,16 @@ const moodGradientMap: Record<Mood['name'], [string, string]> = {
     Sick: ['#C8FACC', '#70C173'],
 }
 
+type MoodCount = {
+    name: Mood['name'];
+    count: number;
+};
+
 export default async function Home() {
     const globalMoodData = await getMoodValues()
     const highestMood = Object.entries(globalMoodData)
-        .reduce((highest, [mood, count]) => 
-            count > (highest.count || 0) ? { name: mood, count } : highest, 
+        .reduce<MoodCount>((highest, [mood, count]) => 
+            count > highest.count ? { name: mood as Mood['name'], count } : highest,
             { name: Moods[0].name, count: 0 }
         );
     const globalMood = Moods.find(m => m.name === highestMood.name) || Moods[0];
