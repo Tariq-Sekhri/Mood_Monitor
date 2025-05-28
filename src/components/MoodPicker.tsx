@@ -21,7 +21,7 @@ export default function MoodPicker({ setMood }: MoodPickerProps) {
     }
 
     return (
-        <div className="bg-white text-black w-80 absolute top-[150px] left-1/2 transform -translate-x-1/2">
+        <div className="shadow-2xl drop-shadow-lg bg-white text-black w-85 h-35 pt-3 pl-5 pr-5 rounded-4xl absolute top-[150px] left-1/2 transform -translate-x-1/2">
             <div className="grid grid-cols-5 gap-x-0 gap-y-4 text-center">
                 {Moods.map(m => (
                     <button

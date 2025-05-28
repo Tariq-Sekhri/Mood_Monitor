@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "mood_monitor": "file:",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
