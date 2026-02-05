@@ -1,4 +1,3 @@
-```markdown
 # Mood Monitor
 
 Real-time mood tracking application. Users select a mood emoji and the community's emotional state is aggregated live.
@@ -76,7 +75,7 @@ mood_monitor/
 │   └── types/           # TypeScript type definitions
 ├── public/              # Static assets
 └── ...config files
-```
+
 
 ## How It Works
 
