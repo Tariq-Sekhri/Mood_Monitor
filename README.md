@@ -1,16 +1,16 @@
-# 🎭 Mood Monitor
+```markdown
+# Mood Monitor
 
-A real-time mood tracking application that allows users to share and visualize the collective emotional state of the community.
+Real-time mood tracking application. Users select a mood emoji and the community's emotional state is aggregated live.
 
-## 🌟 Features
+## Features
 
-- **Real-time Mood Selection**: Choose from 10 different mood emojis
-- **One Vote Per User**: Users can only have one active mood at a time
-- **Local Persistence**: Your mood choice persists across browser sessions
-- **Global Visualization**: Background gradient reflects the most popular mood
-- **Vote Display**: Real-time view of community mood statistics
+- Real-time mood selection with immediate vote aggregation
+- One vote per user enforced via local persistence
+- Background gradient reflects the most popular community mood
+- Vote statistics display showing distribution across all moods
 
-## 🎨 Available Moods
+## Moods
 
 - 🥲 Super Sad
 - 🙁 Sad
@@ -23,97 +23,79 @@ A real-time mood tracking application that allows users to share and visualize t
 - 🤪 Goofy
 - 🤒 Sick
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Database**: Redis
-- **State Management**: React Hooks + Server Actions
-- **Architecture**: Server Components with Client Islands
+- **State**: React Hooks + Server Actions
 
-## 🚀 Getting Started
+## Getting Started
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Tariq-Sekhri/Mood_Monitor
-   cd mood_monitor
-   ```
+**Clone the repository**
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/Tariq-Sekhri/Mood_Monitor
+cd mood_monitor
+```
 
-3. **Set up environment variables**
-   Create a `.env.local` file with:
-   ```env
-   REDIS_PW=your_redis_password
-   REDIS_HOST=your_redis_host
-   REDIS_PORT=your_redis_port
-   ```
+**Install dependencies**
 
-4. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+```
 
-5. **Open the application**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+**Configure environment**
 
-## 🏗️ Project Structure
+Create `.env.local`:
+
+```env
+REDIS_PW=your_redis_password
+REDIS_HOST=your_redis_host
+REDIS_PORT=your_redis_port
+```
+
+**Run development server**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
 
 ```
 mood_monitor/
 ├── src/
 │   ├── actions/         # Server actions for mood operations
-│   ├── app/            # Next.js app router pages
-│   ├── components/     # React components
-│   ├── lib/           # Utilities and configurations
-│   └── types/         # TypeScript type definitions
-├── public/           # Static assets
+│   ├── app/             # Next.js app router pages
+│   ├── components/       # React components
+│   ├── lib/             # Utilities and configurations
+│   └── types/           # TypeScript type definitions
+├── public/              # Static assets
 └── ...config files
 ```
 
-## 💡 How It Works
+## How It Works
 
-1. **Mood Selection**:
-   - Users can select their current mood from the emoji grid
-   - Each selection is stored locally and on the server
-   - Users can change their mood by clicking their current emoji
+**Voting**
+Users select a mood from the emoji grid. Each user gets one active vote stored locally and in Redis. Changing moods automatically decrements the previous vote and increments the new one.
 
-2. **Vote Tracking**:
-   - One vote per user is enforced
-   - Previous mood is decremented when changing moods
-   - Current mood counts are stored in Redis
+**Visualization**
+The background gradient shifts to match the hex color of the current winning mood. A statistics panel displays vote counts for all moods in real-time.
 
-3. **Visual Feedback**:
-   - Background gradient changes based on most popular mood
-   - Current mood is displayed in the header
-   - Real-time vote display shows community mood statistics
+**Persistence**
+User votes persist across browser sessions via localStorage. Redis maintains the global vote counts for all connected clients.
 
-## 🧪 Development
+## License
 
-- Use the built-in dev panel to test mood operations
-- Monitor mood counts and state changes in real-time
-- Test the one-vote-per-user system
-- Experiment with different moods to see gradient changes
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 
-## 📝 License
+You may use and modify this project for non-commercial purposes with appropriate attribution. See LICENSE file for details.
 
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License - see the [LICENSE](LICENSE) file for details. This means you can freely use and modify this project for non-commercial purposes, as long as you provide appropriate attribution.
+## Contributing
 
-## 👥 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 🙏 Acknowledgments
-
-- Built with Next.js 14 and Redis
-- Emoji designs from [Unicode Emoji 15.1](https://unicode.org/emoji/charts/emoji-list.html)
-
-## 📫 Contact
-
-- GitHub: [@Tariq-Sekhri](https://github.com/Tariq-Sekhri)
-- LinkedIn: [Tariq Sekhri](https://linkedin.com/in/tariq-sekhri-b69098232)
-- Email: tariqsekhri+moodmonitor@gmail.com
+Pull requests are welcome.
+```
