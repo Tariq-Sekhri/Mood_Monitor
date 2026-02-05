@@ -75,7 +75,7 @@ mood_monitor/
 │   └── types/           # TypeScript type definitions
 ├── public/              # Static assets
 └── ...config files
-
+```
 
 ## How It Works
 
